@@ -28,12 +28,12 @@ class ProductsTable
     {
         return $table
             ->columns([
-                TextColumn::make('category_id')
-                    ->numeric()
-                    ->sortable(),
-
                 TextColumn::make('name')
                     ->searchable(),
+
+                TextColumn::make('category.name')
+                    ->badge()
+                    ->sortable(),
 
                 TextColumn::make('price')
                     ->money()
@@ -139,9 +139,6 @@ class ProductsTable
 
                 if (!empty($data['attributes'])) {
                     foreach ($data['attributes'] as $attribute) {
-
-                        // dd($attribute);
-
                         if (!empty($attribute['value_id'])) {
                             $query->whereHas('productAttributes', function ($q) use ($attribute) {
                                 $q->where('attribute_value_id', $attribute['value_id']);
