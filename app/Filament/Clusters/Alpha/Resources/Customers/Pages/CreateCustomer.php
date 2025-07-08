@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Customers\Pages;
+namespace App\Filament\Clusters\Alpha\Resources\Customers\Pages;
 
 use Filament\Schemas\Schema;
 use App\Services\CustomerApi;
@@ -8,7 +8,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Schemas\Components\Utilities\Set;
-use App\Filament\Resources\Customers\CustomerResource;
+use App\Filament\Clusters\Alpha\Resources\Customers\CustomerResource;
 
 class CreateCustomer extends CreateRecord
 {
@@ -19,6 +19,7 @@ class CreateCustomer extends CreateRecord
         return $schema
             ->components([
                 Select::make('external')
+                    ->belowContent('available: John Doe, Jane Doe, Acme Company')
                     ->columnSpanFull()
                     ->searchable()
                     ->live()

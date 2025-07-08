@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
@@ -22,6 +21,9 @@ class DatabaseSeeder extends Seeder
 
         User::factory(2)->create();
 
-        Customer::factory(3)->create();
+        $this->call([
+            AlphaSeeder::class,
+            BravoSeeder::class
+        ]);
     }
 }

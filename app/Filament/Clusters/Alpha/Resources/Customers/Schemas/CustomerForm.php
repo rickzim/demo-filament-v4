@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Customers\Schemas;
+namespace App\Filament\Clusters\Alpha\Resources\Customers\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -13,7 +13,6 @@ class CustomerForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-
                 TextInput::make('email')
                     ->email()
                     ->required(),

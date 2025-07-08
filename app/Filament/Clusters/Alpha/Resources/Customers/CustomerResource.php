@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\Customers;
+namespace App\Filament\Clusters\Alpha\Resources\Customers;
 
-use App\Filament\Resources\Customers\Pages\CreateCustomer;
-use App\Filament\Resources\Customers\Pages\EditCustomer;
-use App\Filament\Resources\Customers\Pages\ListCustomers;
-use App\Filament\Resources\Customers\Schemas\CustomerForm;
-use App\Filament\Resources\Customers\Tables\CustomersTable;
+use App\Filament\Clusters\Alpha\AlphaCluster;
+use App\Filament\Clusters\Alpha\Resources\Customers\Pages\CreateCustomer;
+use App\Filament\Clusters\Alpha\Resources\Customers\Pages\EditCustomer;
+use App\Filament\Clusters\Alpha\Resources\Customers\Pages\ListCustomers;
+use App\Filament\Clusters\Alpha\Resources\Customers\Schemas\CustomerForm;
+use App\Filament\Clusters\Alpha\Resources\Customers\Tables\CustomersTable;
 use App\Models\Customer;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -19,6 +20,8 @@ class CustomerResource extends Resource
     protected static ?string $model = Customer::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $cluster = AlphaCluster::class;
 
     public static function form(Schema $schema): Schema
     {

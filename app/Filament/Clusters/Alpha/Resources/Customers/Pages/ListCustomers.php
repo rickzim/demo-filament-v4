@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Customers\Pages;
+namespace App\Filament\Clusters\Alpha\Resources\Customers\Pages;
 
-use App\Filament\Resources\Customers\CustomerResource;
+use App\Filament\Clusters\Alpha\Resources\Customers\CustomerResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
