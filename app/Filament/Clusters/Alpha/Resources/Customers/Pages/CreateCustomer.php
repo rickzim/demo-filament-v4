@@ -18,8 +18,8 @@ class CreateCustomer extends CreateRecord
     {
         return $schema
             ->components([
-                Select::make('external')
-                    ->belowContent('available: John Doe, Jane Doe, Acme Company')
+                Select::make('externalSource')
+                    ->belowContent('Options: John Doe, Jane Doe, Acme Company')
                     ->columnSpanFull()
                     ->searchable()
                     ->live()
@@ -29,8 +29,7 @@ class CreateCustomer extends CreateRecord
                      * Will not work when null
                      * Will not work when ''
                      * */
-                    ->getOptionLabelUsing(fn() => 'some-label')
-                    /** - */
+                    // ->getOptionLabelUsing(fn() => 'some-label')
                     ->getSearchResultsUsing(function (string $search): array {
                         return new CustomerApi()
                             ->search($search)
@@ -56,7 +55,6 @@ class CreateCustomer extends CreateRecord
                 TextInput::make('email')
                     ->readOnly()
                     ->required(),
-
             ]);
     }
 }
