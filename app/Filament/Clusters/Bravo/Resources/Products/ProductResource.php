@@ -8,6 +8,7 @@ use App\Filament\Clusters\Bravo\Resources\Products\Pages\EditProduct;
 use App\Filament\Clusters\Bravo\Resources\Products\Pages\ListProducts;
 use App\Filament\Clusters\Bravo\Resources\Products\Schemas\ProductForm;
 use App\Filament\Clusters\Bravo\Resources\Products\Tables\ProductsTable;
+use App\Filament\Clusters\Bravo\Resources\Products\Widgets\ProductFilter;
 use App\Models\Product;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -39,6 +40,13 @@ class ProductResource extends Resource
             //
         ];
     }
+
+    // public static function getWidgets(): array
+    // {
+    //     return [
+    //         ProductFilter::class,
+    //     ];
+    // }
 
     public static function getPages(): array
     {

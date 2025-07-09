@@ -8,13 +8,27 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
+use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Clusters\Bravo\Resources\Products\Tables\Filters\ProductAdvancedFilter;
+use Livewire\Component;
 
 class ProductsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
+            /**
+             * for `ProductFilter` widget
+             */
+            // ->modifyQueryUsing(function (Builder $query, Component $livewire) {
+            //     $query
+            //         ->when($livewire->categoryId, function (Builder $query, $category_id) {
+            //             $query->where('category_id', $category_id);
+            //         });
+            // })
+            /**
+             * Columns
+             */
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
