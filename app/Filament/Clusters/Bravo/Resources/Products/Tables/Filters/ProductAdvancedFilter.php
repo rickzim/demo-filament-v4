@@ -27,8 +27,10 @@ class ProductAdvancedFilter
                     ->visible(fn(Get $get) => $get('category_id'))
                     ->label('Attribute Filters')
                     ->table([
-                        TableColumn::make('Group'),
-                        TableColumn::make('Field'),
+                        TableColumn::make('Group')
+                            ->width('25%'),
+                        TableColumn::make('Field')
+                            ->width('25%'),
                         TableColumn::make('Value(s)'),
                     ])
                     ->schema([
@@ -70,7 +72,7 @@ class ProductAdvancedFilter
                             ->pluck('value')
                             ->implode(', ');
 
-                        $indicators[] = $field->name . ': ' . $values;
+                        $indicators[] = $field?->name . ': ' . $values;
                     }
                 }
 
@@ -104,6 +106,10 @@ class ProductAdvancedFilter
                 }
 
                 return AttributeGroup::getGroupsByCategory($category_id);
+            })
+            ->afterStateUpdated(function (Set $set) {
+                $set('field_id', null);
+                $set('value_id', []);
             });
     }
 
@@ -123,6 +129,10 @@ class ProductAdvancedFilter
                 return AttributeField::where('attribute_group_id', $groupId)
                     ->pluck('name', 'id')
                     ->toArray();
+            })
+            ->afterStateUpdated(function (Set $set) {
+                $set('value_id', []);
+                // $set('', );
             });
     }
 

@@ -26,9 +26,6 @@ class ProductsTable
             //             $query->where('category_id', $category_id);
             //         });
             // })
-            /**
-             * Columns
-             */
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
@@ -51,17 +48,18 @@ class ProductsTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            /**
-             * Filters
-             */
             ->filters([
                 ProductAdvancedFilter::make(),
             ], FiltersLayout::AboveContent)
             ->filtersFormColumns(1)
-            ->deferFilters(false)
             /**
-             * Actions
-             */
+             * Will not work with `deferFilters(true)`
+             *
+             * error when selecting `field` within the reapter: Using $this when not in object context
+             * ...\vendor\filament\forms\resources\views\components\select.blade.php :161
+             * 161: livewireId: @js($this->getId()),
+             * */
+            ->deferFilters(true)
             ->recordActions([
                 EditAction::make(),
             ])
