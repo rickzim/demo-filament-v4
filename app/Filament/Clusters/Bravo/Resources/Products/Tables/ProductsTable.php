@@ -66,11 +66,12 @@ class ProductsTable
     public static function getCustomFilter(): Filter
     {
         return Filter::make('category_attributes')
+            ->label('Advanced Filter')
             ->schema([
                 Select::make('category_id')
                     ->label('Category')
+                    ->searchable()
                     ->live()
-                    // ->searchable()
                     ->native(true)
                     ->options(Category::pluck('name', 'id'))
                     ->afterStateUpdated(function (Set $set, Component $livewire) {
@@ -103,7 +104,7 @@ class ProductsTable
                         Select::make('field_id')
                             ->label('Field')
                             ->live()
-                            ->options(function ($get) {
+                            ->options(function (Get $get) {
                                 $groupId = $get('group_id');
 
                                 if (!$groupId) {
@@ -117,7 +118,7 @@ class ProductsTable
 
                         Select::make('value_id')
                             ->label('Values')
-                            ->options(function ($get) {
+                            ->options(function (Get $get) {
                                 $fieldId = $get('field_id');
 
                                 if (!$fieldId) {
@@ -147,7 +148,6 @@ class ProductsTable
                     }
                 }
             })
-            ->label('Advanced Filter')
             ->indicateUsing(function (array $data) {
                 $indicators = [];
 
