@@ -29,7 +29,7 @@ class CreateCustomer extends CreateRecord
                      * Will not work when null
                      * Will not work when ''
                      * */
-                    // ->getOptionLabelUsing(fn() => 'some-label')
+                    ->getOptionLabelUsing(fn() => 'some-label')
                     ->getSearchResultsUsing(function (string $search): array {
                         return new CustomerApi()
                             ->search($search)
