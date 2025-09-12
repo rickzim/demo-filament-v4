@@ -3,6 +3,7 @@
 namespace App\Filament\Forms\Components\RichEditor\RichContentCustomBlocks;
 
 use Filament\Actions\Action;
+use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor\RichContentCustomBlock;
 
@@ -22,10 +23,26 @@ class HeroBlock extends RichContentCustomBlock
     {
         return $action
             ->modalDescription('Configure the hero block')
+            /**
+             *  possible solutions
+             * */
+
+            /** 1 */
+            // ->fillForm([
+            //     'heading' => 'default value'
+            // ])
+
+            /** 2 */
+            // ->mountUsing(function (Schema $form) {
+            //     $form->fill();
+            // })
+
+            /**
+             * end
+             * */
             ->schema([
                 TextInput::make('heading')
-                    // ->default('default value')
-                    ->default(fn() => 'default value')
+                    ->default('default value')
                     ->required(),
 
                 TextInput::make('subheading'),
