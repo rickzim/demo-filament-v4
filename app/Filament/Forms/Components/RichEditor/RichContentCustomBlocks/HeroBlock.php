@@ -24,7 +24,7 @@ class HeroBlock extends RichContentCustomBlock
         return $action
             ->modalDescription('Configure the hero block')
             /**
-             *  possible solutions
+             * possible solutions
              * */
 
             /** 1 */
@@ -33,9 +33,9 @@ class HeroBlock extends RichContentCustomBlock
             // ])
 
             /** 2 */
-            // ->mountUsing(function (Schema $form) {
-            //     $form->fill();
-            // })
+            ->mountUsing(function (Schema $form) {
+                $form->fill();
+            })
 
             /**
              * end
